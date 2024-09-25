@@ -1,0 +1,50 @@
+.navbar {
+    background-color: #f8f9fa; /* Color de fondo */
+    padding: 10px 20px; /* Espaciado */
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between; /* Espaciado entre logo y menú */
+    align-items: center; /* Alinear verticalmente */
+  }
+  
+  .navbar-brand {
+    display: flex;
+    align-items: center; /* Alinear el logo y texto */
+    text-decoration: none; /* Quitar subrayado */
+    color: #333; /* Color del texto */
+  }
+  
+  .logo {
+    width: 30px; /* Ancho del logo */
+    height: 30px; /* Alto del logo */
+    margin-right: 10px; /* Espaciado entre logo y texto */
+  }
+  
+  .navbar-nav {
+    list-style: none; /* Quitar puntos de la lista */
+    display: flex; /* Mostrar elementos en línea */
+    padding: 0; /* Quitar padding */
+    margin: 0; /* Quitar margin */
+  }
+  
+  .nav-item {
+    margin-left: 20px; /* Espaciado entre los elementos */
+  }
+  
+  .nav-link {
+    text-decoration: none; /* Quitar subrayado */
+    color: #333; /* Color del enlace */
+    transition: color 0.3s; /* Transición de color */
+  }
+  
+  .nav-link:hover {
+    color: #999; /* Color al pasar el mouse */
+  }
+
+  img{
+    width: 40px;
+  }
+
+  
