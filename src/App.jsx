@@ -1,12 +1,18 @@
+import ItemCount from "./components/ItemCount"
 import ItemListContainer from "./components/ItemListContainer"
 import NavBar from "./components/NavBar"
 
-function App() {
 
-  return (
+function App() {
+  
+
+  return ( 
     <>
       <NavBar/>
-      <ItemListContainer greeting={"Bienvenido a nuestra tienda, que disfrutes"}/>
+      <div>
+        <ItemListContainer/>
+      </div>
+      <ItemCount initial={1} stock={45} onAdd={(quantity)=> console.log('Cantidad agregada', quantity)}/>
     </>
   )
 }

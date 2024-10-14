@@ -1,25 +1,11 @@
-import React from 'react'
-
-const ItemListContainer = ({greeting}) => {
-    const containerStyle = {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-        backgroundColor: '#f5f5f5',
-        color: '#333',
-        fontSize: '24px',
-        fontFamily: 'Arial, sans-serif',
-        textAlign: 'center',
-        padding: '20px',
-        borderRadius: '8px',
-        boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
-      };
-      return (
-        <div style={containerStyle}>
-          {greeting}
-        </div>
-      );
+import React, { useState } from 'react'
+import products from '../assets/mockData.json'
+import ItemList from './ItemList';
+//ACA VA A ESTAR LA LÓGICA PARA TRAER LOS PRODUCTOS 
+const ItemListContainer = () => {
+//FALTA GENERAR LA PROMISE CON EL RETRASO DE DOS SEG.
+      return <ItemList products={products}/>
+        
     };
 
 export default ItemListContainer
