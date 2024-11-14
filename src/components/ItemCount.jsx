@@ -1,7 +1,10 @@
 import React from 'react'
 import {useState} from 'react'
+import styles from '../styles/itemcount.module.scss'
+import Cart  from './Cart'
 
-const ItemCount = ({stock, initial, onAdd}) => {
+
+const ItemCount = ({stock, initial, onAdd, addCart, product}) => {
 
     const [quantity, setQuantity] = useState(initial) //Se setea un estado inicial, indicando la cantidad inicial del contador
 
@@ -15,6 +18,11 @@ const ItemCount = ({stock, initial, onAdd}) => {
         if(quantity > 1){
                 setQuantity(quantity-1)
         }
+    } 
+
+    const handleAddCart = () =>{
+        addCart(item, quantity);
+        onAdd(quantity)
     }
 
   return (
@@ -29,6 +37,7 @@ const ItemCount = ({stock, initial, onAdd}) => {
                 Agregar al carrito
             </button>
         </div>
+        <button onClick={()=>onAdd(quantity)}>Add cart</button>
     </div>
   )
 }

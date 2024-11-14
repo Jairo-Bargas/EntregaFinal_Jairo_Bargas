@@ -32,7 +32,7 @@ const ItemListContainer = () => {
   if (loading) {
     return <p>Cargando...</p>;
   }
-  return <ItemList products={products} />;
+  return (products && <ItemList products={products} />);
 };
 
 export default ItemListContainer;

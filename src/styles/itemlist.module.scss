@@ -1,0 +1,47 @@
+.ItemList {
+    display: grid; /* Utiliza Grid para el diseño */
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas de igual tamaño */
+    gap: 50px; /* Espacio entre los items */
+    justify-items: center; /* Centra los items horizontalmente */
+    align-items: stretch; /* Asegura que todos los items tengan la misma altura */
+    margin: 0 auto; /* Centra el contenedor en la página */
+    width: 100%;
+    max-width: 1200px; /* Máximo ancho del contenedor */
+    box-sizing: border-box; /* Asegura que los paddings no aumenten el tamaño del contenedor */
+    
+    /* Asegura que las filas se acomoden correctamente */
+    justify-content: center; /* Centra las filas */
+    align-content: center; /* Centra las filas */
+    /* Ajustes responsivos */
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr); /* Dos columnas en tablets */
+    }
+  
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr; /* Una columna en móviles */
+    }
+  
+  }
+  
+  /* Ajustes adicionales para los items dentro de la lista */
+  .Item {
+    display: flex;
+    flex-direction: column; /* Asegura que el contenido esté apilado verticalmente */
+    justify-content: space-between; /* Distribuye el contenido de forma uniforme */
+    align-items: center;
+    padding: 20px;  /* Ajuste de relleno */
+    background-color: #f4f4f4; /* Solo para visualización */
+    border-radius: 8px;
+    width: 100%; /* Asegura que los items no desborden */
+    box-sizing: border-box; /* Asegura que el relleno y los bordes no afecten el tamaño */
+    
+    /* Ajuste de tamaño de las tarjetas */
+    min-height: 300px; /* Todos los items tendrán al menos 300px de altura */
+    height: 300px; /* Las tarjetas tendrán una altura fija de 300px */
+    max-height: 400px; /* Si quieres limitar la altura máxima */
+  }
+  
+  .Item > * {
+    flex-grow: 1; /* Asegura que el contenido se distribuya uniformemente */
+  }
+  

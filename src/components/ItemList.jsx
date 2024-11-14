@@ -1,16 +1,16 @@
-import React from 'react'
-import Item from './Item'
-//EN ESTE COMPONENTE HACEMOS EL MAPEO DE LOS PRODUCTS Y DEVOLVEMOS UN ITEM POR CADA PRODUCT
-const ItemList = ({products}) => {
-  return (
-    <div>
-        {products.map(product => {
-          return(
-            <Item item={product} key={product.id}/> //A la izquierda va el nombre de la propiedad, como lo recibe el componente y a la derecha el nombre del componente padre.
-          )
-        })}
-    </div>
-  )
-}
 
-export default ItemList
+import React from 'react';
+import Item from './Item'; // Asumo que 'Item' es otro componente que renderiza los detalles de cada producto
+import styles from '../styles/itemlist.module.scss';
+
+const ItemList = ({ products }) => {
+  return (
+    <div className={styles.ItemList}> {/* Aplica el estilo desde el SCSS */}
+      {products.map((product) => (
+        <Item item={product} key={product.id} />
+      ))}
+    </div>
+  );
+};
+
+export default ItemList;

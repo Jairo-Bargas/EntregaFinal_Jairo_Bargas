@@ -1,26 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import products from '../assets/mockData.json';
-import ItemDetail from '../components/ItemDetail';
+import mockProducts from '../assets/mockData.json';
+import ItemList from './ItemList';
 import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-
-const ItemDetailContainer = () => {
-  const [product, setProduct] = useState(null);
-  const { id } = useParams();
-  const [loading, setLoading] = useState(true);
+const ItemListContainer = () => {
+  const [products, setProducts] = useState([]);
+  const { categoryId } = useParams();
+  const [loading, setLoading] = useState(true); // Estado para manejar la carga
 
   useEffect(() => {
     const fetchProduct = () => {
-      const productFound = products.find(product => product.id === parseInt(id, 10));
-
-
+    let productsFiltered = [];
+    if (categoryId) {
+      productsFiltered = mockProducts.filter(f => f.category === categoryId);
+    } else {
+      productsFiltered = mockProducts;
+    }
       setTimeout(() => {
-        setProduct(productFound);
+        resolve(productsFiltered);
         setLoading(false);
-      }, 2000); 
-    };
-
+      }, 2000);
+    }
     fetchProduct();
     Swal.fire({
       title: 'Cargando...',
@@ -31,8 +32,9 @@ const ItemDetailContainer = () => {
         Swal.showLoading(); // Muestra el ícono de carga
       }
     });
-    
-  }, [id]); 
+
+    }, [categoryId])
+
 
   useEffect(() => {
     if (!loading) {
@@ -43,8 +45,7 @@ const ItemDetailContainer = () => {
   if (loading) {
     return null; // No renderizamos nada mientras se carga
   }
-
-  return (product && <ItemDetail product={product} />);
+  return <ItemList products={products} />;
 };
 
-export default ItemDetailContainer;
+export default ItemListContainer;
