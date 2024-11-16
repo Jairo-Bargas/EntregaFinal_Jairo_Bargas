@@ -3,6 +3,8 @@ import products from '../assets/mockData.json';
 import ItemDetail from '../components/ItemDetail';
 import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../firebase/config';
 
 
 const ItemDetailContainer = () => {
@@ -11,15 +13,40 @@ const ItemDetailContainer = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchProduct = () => {
-      const productFound = products.find(product => product.id === parseInt(id, 10));
+        (async()=>{
+          try {
+            const docRef = doc(db, "products", id);
+          const docSnap = await getDoc(docRef);
+  
+          if (docSnap.exists()) {
+            console.log("Document data:", docSnap.data());
+            setProduct({...docSnap.data(), id})
+          } else {
+            // docSnap.data() will be undefined in this case
+            console.log("No such document!");
+          }
+          } catch (error) {
+            console.log(error)
+          }
+          
+        }) ()
+      }, [id])
+
+        return (product && <ItemDetail product={product} />);
+
+    }
+
+        export default ItemDetailContainer;
+            
+    /* const fetchProduct = () => {
+      const productFound = products.find(product => product.id === parseInt(id, 10)); */
 
 
-      setTimeout(() => {
+      /* setTimeout(() => {
         setProduct(productFound);
         setLoading(false);
       }, 2000); 
-    };
+    }; 
 
     fetchProduct();
     Swal.fire({
@@ -29,10 +56,11 @@ const ItemDetailContainer = () => {
       allowOutsideClick: false, // Para evitar que el usuario cierre la alerta
       didOpen: () => {
         Swal.showLoading(); // Muestra el ícono de carga
-      }
-    });
+    };
     
-  }, [id]); 
+}, [id]);
+ 
+
 
   useEffect(() => {
     if (!loading) {
@@ -42,9 +70,6 @@ const ItemDetailContainer = () => {
 
   if (loading) {
     return null; // No renderizamos nada mientras se carga
-  }
+  } */
 
-  return (product && <ItemDetail product={product} />);
-};
-
-export default ItemDetailContainer;
+ 
